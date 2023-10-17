@@ -8,7 +8,7 @@ struct l_list{
 //insertion at end
 void end_insertion(l_list **head,l_list *ptr){
     if(*head==NULL){
-        *head=ptr;
+        cout<<"Overflow"<<endl;
     }
     else{
         l_list *temp;
