@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-char tree[10];
+char tree[30];
 void set_Root(char data){
     if (tree[0]!='\0'){
         cout<<"Data already present"<<endl;
@@ -27,21 +27,63 @@ void set_right(int root,char data){
     }
 }
 
+
 //pre-order
-void run(int i){
-    cout<<tree[i]<<endl;
+void pre_order(int i=0){
+    cout<<tree[i];
     if(tree[2*i+1]!='\0'){
-        run(2*i+1);
+        pre_order(2*i+1);}
     if(tree[2*i+2]!='\0'){
-        run(2*i+2);
+        pre_order(2*i+2);
     }
 }
+
+
+//in-order
+void in_order(int i=0){
+    if(tree[2*i+1]!='\0'){
+        in_order(2*i+1);
+    }
+    cout<<tree[i];
+    if(tree[2*i+2]!='\0'){
+        in_order(2*i+2);
+    }
 }
+
+
+//post-order
+void post_order(int i=0){
+    if(tree[2*i+1]!='\0'){
+        post_order(2*i+1);
+    }
+    if(tree[2*i+2]!='\0'){
+        post_order(2*i+2);
+    }
+    cout<<tree[i];
+}
+
+
 int main() {
     set_Root('a');
     set_left(0,'b');
     set_right(0,'c');
     set_left(1,'d');
-    run(0);
+    set_right(1,'e');
+    set_right(2,'f');
+    set_left(4,'g');
+    
+    
+    
+    pre_order();
+    cout<<endl;
+    
+    
+    in_order();
+    cout<<endl;
+    
+    
+    post_order();
+    
+    
     return 0;
 }
