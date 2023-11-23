@@ -26,6 +26,8 @@ void set_right(int root,char data){
         tree[root*2+2]=data;
     }
 }
+
+//pre-order
 void run(int i){
     cout<<tree[i]<<endl;
     if(tree[2*i+1]!='\0'){
