@@ -21,7 +21,7 @@ void insertion(int *tree,int val,int i=0){
         tree[i]=val;
         return;
     }
-    if(tree[i]>val){
+    if(tree[i]>=val){
         insertion(tree,val,2*i+1);
     }
     else{
