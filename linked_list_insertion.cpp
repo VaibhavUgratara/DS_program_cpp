@@ -23,7 +23,7 @@ void end_insertion(l_list **head,l_list *ptr){
 
 //insertion at start
 void begin_insertion(l_list **head,l_list *ptr){
-    if(*head==NULL){
+    if(*ptr==NULL){
         cout<<"Overflow"<<endl;
     }
     else{
@@ -35,7 +35,7 @@ void begin_insertion(l_list **head,l_list *ptr){
 
 //insertion in middle (node starts from 1 and goes to n i.e. size of linked list)
 void insert(l_list **head,l_list *ptr,int node){
-    if(*head==NULL){
+    if(*ptr==NULL){
         cout<<"Overflow"<<endl;
     }
     else if(node==1){
