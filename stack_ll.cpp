@@ -1,81 +1,46 @@
-#include<iostream>
+// Stack using linked list
+#include <iostream>
 using namespace std;
-const int MAX_SIZE=10;
 
-class Node{
-    public:
-        int data;
-        Node *n;
-        Node(int d){
-            this->data=d;
-            this->n=NULL;
-        }
+struct Node{
+    int data;
+    Node *next;
 };
 
 class Stack{
+    private:
+    Node *top=NULL;
     public:
-        Node *top_node;
-        int top;
-        Stack(){
-            top=-1;
-            top_node=NULL;
+    void push(int val){
+        Node *ptr=new Node;
+        if(!ptr){
+            cout<<"Stack Overflow"<<endl;
+            return;
         }
-        void PUSH(int d){
-            if(this->top==MAX_SIZE-1){
-                cout<<"Overflow"<<endl;
-            }
-            else{
-                Node *temp= new Node(d);
-                temp->n=top_node;
-                top_node=temp;
-                top+=1;
-            }
+        ptr->data=val;
+        ptr->next=top;
+        top=ptr;
+    }
+    void pop(){
+        if(top==NULL){
+            cout<<"Stack Underflow"<<endl;
+            return;
         }
-        void POP(){
-            if(top_node==NULL){
-                cout<<"Underflow"<<endl;
-            }
-            else{
-                Node *temp;
-                temp=top_node;
-                top_node=top_node->n;
-                free(temp);
-                top--;
-            }
-        }
+        cout<<top->data<<endl;
+        Node *temp=top;
+        top=top->next;
+        free (temp);
+    }
 };
 
-int main(){
-    Stack s1;
-    s1.PUSH(10);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(4);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.PUSH(4);
-    s1.PUSH(20);
-    s1.PUSH(20);
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
-    s1.POP();
+int main() {
+    Stack s;
+    s.push(30);
+    s.push(40);
+    s.push(50);
+    s.pop();
+    s.pop();
+    s.pop();
+    s.pop();
     return 0;
 }
